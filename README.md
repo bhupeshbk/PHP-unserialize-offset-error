@@ -9,9 +9,9 @@ a:3:{i:0;s:574:"Lorem Ipsum is simply dummy text of the printing and typesetting
 Because when call data from database `\'` its store `'` and s:574 was wrong. 
 
 # fixed with below code
-$fixed_serialized_data_spdname = preg_replace_callback ( '!s:(\d+):"(.*?)";!',
+`$fixed_serialized_data_spdname = preg_replace_callback ( '!s:(\d+):"(.*?)";!',
            function($match) {
                 return ($match[1] == strlen($match[2])) ? $match[0] : 's:' . strlen($match[2]) . ':"' . $match[2] . '";';
            },
            $vendor_store_data['spdname'] );
-$spdname        = unserialize($fixed_serialized_data_spdname);
+$spdname        = unserialize($fixed_serialized_data_spdname);`
